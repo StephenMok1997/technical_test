@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:technical_test/blocs/pokemon/pokemon_bloc.dart';
 import 'package:technical_test/enum/home_tab.dart';
+import 'package:technical_test/views/home/widgets/list_tab.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,31 +31,33 @@ class _HomePageState extends State<HomePage>
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Column(
-        children: [
-          TabBar(
-            controller: tabController,
-            tabs: List.generate(
-              tabs.length,
-              (index) => Tab(
-                text: tabs[index],
+      body: SafeArea(
+        child: Column(
+          children: [
+            TabBar(
+              controller: tabController,
+              tabs: List.generate(
+                tabs.length,
+                (index) => Tab(
+                  text: tabs[index],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: TabBarView(
-              controller: tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: [
-                ListView.builder(
-                  itemBuilder: (context, index) => Text(index.toString()),
-                  itemCount: 100,
-                ),
-                const Placeholder(),
-              ],
+            Expanded(
+              child: TabBarView(
+                controller: tabController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: const [
+                  BlocProvider(
+                    create: PokemonBloc.new,
+                    child: ListTab(),
+                  ),
+                  Placeholder(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

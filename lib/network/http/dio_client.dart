@@ -17,7 +17,7 @@ class DioClient {
   Dio get instance => _dio;
 
   void init() {
-    _dio.options.baseUrl = config.apiUrl;
+    _dio.options.baseUrl = config.baseUrl;
     _dio.options.connectTimeout = config.connectTimeout;
     _dio.options.sendTimeout = config.sendTimeout;
     _dio.options.receiveTimeout = config.receiveTimeout;

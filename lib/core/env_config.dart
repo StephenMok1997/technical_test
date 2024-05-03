@@ -3,18 +3,12 @@ import 'package:envied/envied.dart';
 part 'env_config.g.dart';
 
 @Envied(path: '.env', obfuscate: true)
-class EnvConfig implements BaseConfig {
+class EnvConfig {
   EnvConfig();
 
-  @override
   @EnviedField(varName: 'API_URL')
-  final String apiUrl = _EnvConfig.apiUrl;
-  @override
-  @EnviedField(varName: 'API_VERSION')
-  final String apiVersion = _EnvConfig.apiVersion;
-}
+  static final String apiUrl = _EnvConfig.apiUrl;
 
-abstract class BaseConfig {
-  String get apiUrl;
-  String get apiVersion;
+  @EnviedField(varName: 'API_VERSION')
+  static final String apiVersion = _EnvConfig.apiVersion;
 }
