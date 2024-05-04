@@ -3,6 +3,11 @@ enum InfinitRoute {
     'home',
     '/',
     'home',
+  ),
+  pokemonDetail(
+    'pokemonDetail',
+    '/pokemonDetail/:urlId',
+    'pokemon-detail',
   );
 
   final String name;

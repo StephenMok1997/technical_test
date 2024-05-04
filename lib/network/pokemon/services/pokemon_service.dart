@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart';
+import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
 
 part 'pokemon_service.g.dart';
 
@@ -12,5 +13,10 @@ abstract class PokemonService {
   Future<PokemonListResponse> getPokemonList({
     @Query('offset') int? offset,
     @Query('limit') int? limit,
+  });
+
+  @GET('/pokemon/{id}')
+  Future<PokemonResponse> getPokemon({
+    @Path('id') required int id,
   });
 }

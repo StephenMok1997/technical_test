@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:technical_test/network/http/http_client.dart';
+import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
 part 'pokemon_list_response.g.dart';
 
@@ -27,8 +27,9 @@ class PokemonListResponse {
 
 @JsonSerializable(explicitToJson: true)
 class BasicPokemon {
+  @CapitalizeConverter()
   final String name;
-  @UrlToIndexConverter()
+  @SpeciesUrlToIndexConverter()
   @JsonKey(name: 'url')
   final int urlIndex;
 
@@ -41,40 +42,4 @@ class BasicPokemon {
       _$BasicPokemonFromJson(json);
 
   Map<String, dynamic> toJson() => _$BasicPokemonToJson(this);
-}
-
-class UrlToIndexConverter implements JsonConverter<int, String> {
-  const UrlToIndexConverter();
-
-  @override
-  int fromJson(String json) {
-    final List<String> list = json.split('/');
-    return int.parse(
-      list[list.length - 2],
-    );
-  }
-
-  @override
-  String toJson(int i) => '${HttpClient.dio.options.baseUrl}/pokemon/$i/';
-}
-
-class OffsetConverter implements JsonConverter<int?, String?> {
-  const OffsetConverter();
-
-  @override
-  int? fromJson(String? json) {
-    if (json != null) {
-      final Uri url = Uri.parse(json);
-      final String? offset = url.queryParameters['offset'];
-      if (offset != null) {
-        return int.parse(offset);
-      } else {
-        return null;
-      }
-    }
-    return null;
-  }
-
-  @override
-  String? toJson(int? offset) => null;
 }

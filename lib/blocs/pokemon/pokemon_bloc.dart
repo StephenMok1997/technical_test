@@ -32,7 +32,6 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
         limit: event.limit,
       );
 
-      print(response.next);
       if (response.next == null) {
         emit(
           PokemonListFetchedNoMoreData(

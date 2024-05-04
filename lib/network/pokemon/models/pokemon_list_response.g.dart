@@ -26,12 +26,13 @@ Map<String, dynamic> _$PokemonListResponseToJson(
     };
 
 BasicPokemon _$BasicPokemonFromJson(Map<String, dynamic> json) => BasicPokemon(
-      name: json['name'] as String,
-      urlIndex: const UrlToIndexConverter().fromJson(json['url'] as String),
+      name: const CapitalizeConverter().fromJson(json['name'] as String),
+      urlIndex:
+          const SpeciesUrlToIndexConverter().fromJson(json['url'] as String),
     );
 
 Map<String, dynamic> _$BasicPokemonToJson(BasicPokemon instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'url': const UrlToIndexConverter().toJson(instance.urlIndex),
+      'name': const CapitalizeConverter().toJson(instance.name),
+      'url': const SpeciesUrlToIndexConverter().toJson(instance.urlIndex),
     };

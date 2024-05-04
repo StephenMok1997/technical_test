@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:technical_test/blocs/pokemon/pokemon_bloc.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart';
+import 'package:technical_test/widgets/pokemon_row.dart';
 
 class ListTab extends StatefulWidget {
   const ListTab({super.key});
@@ -47,12 +48,11 @@ class _ListTabState extends State<ListTab> {
       },
       child: PagedListView<int, BasicPokemon>(
         pagingController: pagingController,
-        padding: const EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 16.0,
-        ),
         builderDelegate: PagedChildBuilderDelegate<BasicPokemon>(
-          itemBuilder: (context, item, index) => Text(item.name),
+          itemBuilder: (context, item, index) => PokemonRow(
+            index: index,
+            pokemon: item,
+          ),
         ),
       ),
     );
