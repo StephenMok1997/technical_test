@@ -1,4 +1,6 @@
 import 'package:technical_test/network/http/http_client.dart';
+import 'package:technical_test/network/pokemon/models/generation/generation_list_response.dart';
+import 'package:technical_test/network/pokemon/models/generation/generation_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
 import 'package:technical_test/network/pokemon/services/pokemon_service.dart';
@@ -24,6 +26,23 @@ class PokemonRepository {
     required int id,
   }) async {
     final PokemonResponse response = await _pokemonService.getPokemon(
+      id: id,
+    );
+    return response;
+  }
+
+  Future<List<BasicGeneration>> getGeneration({
+    required int id,
+  }) async {
+    final GenerationListResponse response =
+        await _pokemonService.getGeneration();
+    return response.results;
+  }
+
+  Future<GenerationResponse> getGenerationyId({
+    required int id,
+  }) async {
+    final GenerationResponse response = await _pokemonService.getGenerationById(
       id: id,
     );
     return response;

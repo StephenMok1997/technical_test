@@ -1,45 +1,44 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
-part 'pokemon_list_response.g.dart';
+part 'generation_list_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class PokemonListResponse {
+class GenerationListResponse {
   final int count;
-  final List<BasicPokemon> results;
+  final List<BasicGeneration> results;
   @OffsetConverter()
   final int? next;
   @OffsetConverter()
   final int? previous;
-
-  PokemonListResponse({
+  GenerationListResponse({
     required this.count,
     this.results = const [],
     this.next,
     this.previous,
   });
 
-  factory PokemonListResponse.fromJson(Map<String, dynamic> json) =>
-      _$PokemonListResponseFromJson(json);
+  factory GenerationListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GenerationListResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PokemonListResponseToJson(this);
+  Map<String, dynamic> toJson() => _$GenerationListResponseToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
-class BasicPokemon {
+class BasicGeneration {
   @CapitalizeConverter()
   final String name;
-  @SpeciesUrlToIndexConverter()
+  @UrlToIndexConverter()
   @JsonKey(name: 'url')
   final int urlIndex;
 
-  BasicPokemon({
+  BasicGeneration({
     required this.name,
     required this.urlIndex,
   });
 
-  factory BasicPokemon.fromJson(Map<String, dynamic> json) =>
-      _$BasicPokemonFromJson(json);
+  factory BasicGeneration.fromJson(Map<String, dynamic> json) =>
+      _$BasicGenerationFromJson(json);
 
-  Map<String, dynamic> toJson() => _$BasicPokemonToJson(this);
+  Map<String, dynamic> toJson() => _$BasicGenerationToJson(this);
 }
