@@ -23,7 +23,10 @@ class _ListTabState extends State<ListTab> {
     pagingController.addPageRequestListener(
       (int? pageKey) {
         context.read<PokemonBloc>().add(
-              PokemonListFetched(limit: 120, offset: pageKey),
+              PokemonListFetched(
+                limit: 50,
+                offset: pageKey,
+              ),
             );
       },
     );
