@@ -6,11 +6,6 @@ part 'statistic.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class StatisticData {
-  @JsonKey(name: 'base_stat')
-  final int value;
-  @JsonKey(name: 'stat')
-  final StatisticType statType;
-
   StatisticData({
     required this.value,
     required this.statType,
@@ -18,22 +13,25 @@ class StatisticData {
 
   factory StatisticData.fromJson(Map<String, dynamic> json) =>
       _$StatisticDataFromJson(json);
+  @JsonKey(name: 'base_stat')
+  final int value;
+  @JsonKey(name: 'stat')
+  final StatisticType statType;
 
   Map<String, dynamic> toJson() => _$StatisticDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class StatisticType {
-  @PokeStatConverter()
-  @JsonKey(name: 'name')
-  final PokeStat pokeStat;
-
   StatisticType({
     required this.pokeStat,
   });
 
   factory StatisticType.fromJson(Map<String, dynamic> json) =>
       _$StatisticTypeFromJson(json);
+  @PokeStatConverter()
+  @JsonKey(name: 'name')
+  final PokeStat pokeStat;
 
   Map<String, dynamic> toJson() => _$StatisticTypeToJson(this);
 }

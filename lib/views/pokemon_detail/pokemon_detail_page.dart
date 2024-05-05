@@ -7,11 +7,11 @@ import 'package:technical_test/views/pokemon_detail/widget/stat_progress_bar.dar
 import 'package:technical_test/widgets/shadow_container.dart';
 
 class PokemonDetailPage extends StatefulWidget {
-  final int urlId;
   const PokemonDetailPage({
     super.key,
     required this.urlId,
   });
+  final int urlId;
 
   @override
   State<PokemonDetailPage> createState() => _PokemonDetailPageState();

@@ -4,9 +4,9 @@ part of 'pokemon_detail_bloc.dart';
 sealed class PokemonDetailEvent {}
 
 class PokemonFetched extends PokemonDetailEvent {
-  final int urlId;
-
   PokemonFetched({
     required this.urlId,
   });
+
+  final int urlId;
 }

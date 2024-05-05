@@ -44,6 +44,7 @@ linter:
     prefer_conditional_assignment: true
     prefer_void_to_null: true
     sized_box_for_whitespace: true
+    sort_constructors_first: true
     sort_pub_dependencies: true
     unnecessary_await_in_return: true
     unnecessary_brace_in_string_interps: true

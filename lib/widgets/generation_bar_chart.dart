@@ -4,15 +4,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:numerus/roman/roman.dart';
 import 'package:technical_test/enum/poke_type.dart';
 import 'package:technical_test/network/pokemon/models/generation/generation_response.dart';
-import 'dart:math' as math;
 
 class GenerationBarChart extends StatelessWidget {
-  final List<GenerationResponse> generations;
-
   const GenerationBarChart({
     super.key,
     required this.generations,
   });
+  final List<GenerationResponse> generations;
 
   @override
   Widget build(BuildContext context) {

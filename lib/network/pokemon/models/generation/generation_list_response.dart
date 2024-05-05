@@ -5,12 +5,8 @@ part 'generation_list_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class GenerationListResponse {
-  final int count;
-  final List<BasicGeneration> results;
-  @OffsetConverter()
-  final int? next;
-  @OffsetConverter()
-  final int? previous;
+  factory GenerationListResponse.fromJson(Map<String, dynamic> json) =>
+      _$GenerationListResponseFromJson(json);
   GenerationListResponse({
     required this.count,
     this.results = const [],
@@ -18,20 +14,18 @@ class GenerationListResponse {
     this.previous,
   });
 
-  factory GenerationListResponse.fromJson(Map<String, dynamic> json) =>
-      _$GenerationListResponseFromJson(json);
+  final int count;
+  final List<BasicGeneration> results;
+  @OffsetConverter()
+  final int? next;
+  @OffsetConverter()
+  final int? previous;
 
   Map<String, dynamic> toJson() => _$GenerationListResponseToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class BasicGeneration {
-  @CapitalizeConverter()
-  final String name;
-  @UrlToIndexConverter()
-  @JsonKey(name: 'url')
-  final int urlIndex;
-
   BasicGeneration({
     required this.name,
     required this.urlIndex,
@@ -39,6 +33,11 @@ class BasicGeneration {
 
   factory BasicGeneration.fromJson(Map<String, dynamic> json) =>
       _$BasicGenerationFromJson(json);
+  @CapitalizeConverter()
+  final String name;
+  @UrlToIndexConverter()
+  @JsonKey(name: 'url')
+  final int urlIndex;
 
   Map<String, dynamic> toJson() => _$BasicGenerationToJson(this);
 }

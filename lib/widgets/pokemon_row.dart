@@ -3,14 +3,13 @@ import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart
 import 'package:technical_test/routing/route_handler.dart';
 
 class PokemonRow extends StatelessWidget {
-  final int index;
-  final BasicPokemon pokemon;
-
   const PokemonRow({
     super.key,
     required this.index,
     required this.pokemon,
   });
+  final int index;
+  final BasicPokemon pokemon;
 
   @override
   Widget build(BuildContext context) {

@@ -5,13 +5,8 @@ part 'pokemon_list_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PokemonListResponse {
-  final int count;
-  final List<BasicPokemon> results;
-  @OffsetConverter()
-  final int? next;
-  @OffsetConverter()
-  final int? previous;
-
+  factory PokemonListResponse.fromJson(Map<String, dynamic> json) =>
+      _$PokemonListResponseFromJson(json);
   PokemonListResponse({
     required this.count,
     this.results = const [],
@@ -19,27 +14,30 @@ class PokemonListResponse {
     this.previous,
   });
 
-  factory PokemonListResponse.fromJson(Map<String, dynamic> json) =>
-      _$PokemonListResponseFromJson(json);
+  final int count;
+  final List<BasicPokemon> results;
+  @OffsetConverter()
+  final int? next;
+  @OffsetConverter()
+  final int? previous;
 
   Map<String, dynamic> toJson() => _$PokemonListResponseToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class BasicPokemon {
-  @CapitalizeConverter()
-  final String name;
-  @SpeciesUrlToIndexConverter()
-  @JsonKey(name: 'url')
-  final int urlIndex;
-
+  factory BasicPokemon.fromJson(Map<String, dynamic> json) =>
+      _$BasicPokemonFromJson(json);
   BasicPokemon({
     required this.name,
     required this.urlIndex,
   });
 
-  factory BasicPokemon.fromJson(Map<String, dynamic> json) =>
-      _$BasicPokemonFromJson(json);
+  @CapitalizeConverter()
+  final String name;
+  @SpeciesUrlToIndexConverter()
+  @JsonKey(name: 'url')
+  final int urlIndex;
 
   Map<String, dynamic> toJson() => _$BasicPokemonToJson(this);
 }

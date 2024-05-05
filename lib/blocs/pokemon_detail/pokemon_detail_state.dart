@@ -8,10 +8,11 @@ final class PokemonDetailInitial extends PokemonDetailState {}
 final class PokemonFetchedLoading extends PokemonDetailState {}
 
 final class PokemonFetchedSuccess extends PokemonDetailState {
-  final PokemonResponse pokemon;
   PokemonFetchedSuccess({
     required this.pokemon,
   });
+
+  final PokemonResponse pokemon;
 }
 
 final class PokemonFetchedFailure extends PokemonDetailState {}

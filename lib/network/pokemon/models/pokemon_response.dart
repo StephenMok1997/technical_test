@@ -9,14 +9,8 @@ part 'pokemon_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PokemonResponse {
-  @CapitalizeConverter()
-  final Species species;
-  final List<StatisticData> stats;
-  final Sprites sprites;
-  final List<PokemonTypeData> types;
-  final int height;
-  final int weight;
-
+  factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
+      _$PokemonResponseFromJson(json);
   PokemonResponse({
     required this.species,
     this.stats = const [],
@@ -26,8 +20,13 @@ class PokemonResponse {
     required this.weight,
   });
 
-  factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
-      _$PokemonResponseFromJson(json);
+  @CapitalizeConverter()
+  final Species species;
+  final List<StatisticData> stats;
+  final Sprites sprites;
+  final List<PokemonTypeData> types;
+  final int height;
+  final int weight;
 
   Map<String, dynamic> toJson() => _$PokemonResponseToJson(this);
 }
