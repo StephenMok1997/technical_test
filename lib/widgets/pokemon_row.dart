@@ -23,7 +23,9 @@ class PokemonRow extends StatelessWidget {
           vertical: 16.0,
           horizontal: 16.0,
         ),
-        color: index % 2 == 0 ? Colors.black12 : null,
+        color: index % 2 == 0
+            ? Theme.of(context).primaryColor.withOpacity(0.2)
+            : null,
         child: Text(
           '${index + 1}. ${pokemon.name}',
         ),

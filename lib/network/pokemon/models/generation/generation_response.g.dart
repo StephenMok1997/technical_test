@@ -9,7 +9,8 @@ part of 'generation_response.dart';
 GenerationResponse _$GenerationResponseFromJson(Map<String, dynamic> json) =>
     GenerationResponse(
       id: (json['id'] as num).toInt(),
-      species: (json['species'] as List<dynamic>?)
+      name: const CapitalizeConverter().fromJson(json['name'] as String),
+      pokemonSpecies: (json['pokemon_species'] as List<dynamic>?)
               ?.map((e) => Species.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -18,5 +19,7 @@ GenerationResponse _$GenerationResponseFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$GenerationResponseToJson(GenerationResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'species': instance.species.map((e) => e.toJson()).toList(),
+      'name': const CapitalizeConverter().toJson(instance.name),
+      'pokemon_species':
+          instance.pokemonSpecies.map((e) => e.toJson()).toList(),
     };

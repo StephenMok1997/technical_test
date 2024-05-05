@@ -31,15 +31,13 @@ class PokemonRepository {
     return response;
   }
 
-  Future<List<BasicGeneration>> getGeneration({
-    required int id,
-  }) async {
+  Future<GenerationListResponse> getGeneration() async {
     final GenerationListResponse response =
         await _pokemonService.getGeneration();
-    return response.results;
+    return response;
   }
 
-  Future<GenerationResponse> getGenerationyId({
+  Future<GenerationResponse> getGenerationById({
     required int id,
   }) async {
     final GenerationResponse response = await _pokemonService.getGenerationById(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:technical_test/blocs/generation/generation_bloc.dart';
 import 'package:technical_test/blocs/pokemon/pokemon_bloc.dart';
 import 'package:technical_test/enum/home_tab.dart';
+import 'package:technical_test/views/home/widgets/dashboard_tab.dart';
 import 'package:technical_test/views/home/widgets/list_tab.dart';
 
 class HomePage extends StatefulWidget {
@@ -52,7 +54,10 @@ class _HomePageState extends State<HomePage>
                     create: PokemonBloc.new,
                     child: ListTab(),
                   ),
-                  Placeholder(),
+                  BlocProvider(
+                    create: GenerationBloc.new,
+                    child: DashboardTab(),
+                  ),
                 ],
               ),
             ),

@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:technical_test/blocs/pokemon_detail/pokemon_detail_bloc.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
 import 'package:technical_test/views/pokemon_detail/widget/stat_progress_bar.dart';
+import 'package:technical_test/widgets/shadow_container.dart';
 
 class PokemonDetailPage extends StatefulWidget {
   final int urlId;
@@ -135,20 +134,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
           fontWeight: FontWeight.bold,
         ),
       ),
-      Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: BorderRadius.circular(10.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
-              spreadRadius: 2,
-              blurRadius: 4,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
+      ShadowContainer(
         child: Column(
           children: List.generate(
             pokemon.stats.length,
