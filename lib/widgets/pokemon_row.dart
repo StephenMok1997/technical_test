@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/basic_pokemon.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/pokemon_list_response.dart';
 import 'package:technical_test/routing/route_handler.dart';
 
 class PokemonRow extends StatelessWidget {

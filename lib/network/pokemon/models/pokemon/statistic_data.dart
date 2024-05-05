@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:technical_test/enum/poke_stat.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
-part 'statistic.g.dart';
+part 'statistic_data.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class StatisticData {

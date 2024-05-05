@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:technical_test/blocs/pokemon_detail/pokemon_detail_bloc.dart';
-import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/pokemon_response.dart';
 import 'package:technical_test/views/pokemon_detail/widget/stat_progress_bar.dart';
 import 'package:technical_test/widgets/shadow_container.dart';
 

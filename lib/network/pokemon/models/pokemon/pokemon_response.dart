@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
-import 'package:technical_test/network/pokemon/models/pokemon_type_data.dart';
-import 'package:technical_test/network/pokemon/models/species.dart';
-import 'package:technical_test/network/pokemon/models/sprites.dart';
-import 'package:technical_test/network/pokemon/models/statistic.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/pokemon_type_data.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/species.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/sprites.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/statistic_data.dart';
 
 part 'pokemon_response.g.dart';
 

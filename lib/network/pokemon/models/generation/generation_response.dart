@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
-import 'package:technical_test/network/pokemon/models/species.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/species.dart';
 
 part 'generation_response.g.dart';
 

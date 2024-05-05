@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/basic_pokemon.dart';
 
 part 'pokemon_list_response.g.dart';
 
@@ -22,22 +23,4 @@ class PokemonListResponse {
   final int? previous;
 
   Map<String, dynamic> toJson() => _$PokemonListResponseToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class BasicPokemon {
-  factory BasicPokemon.fromJson(Map<String, dynamic> json) =>
-      _$BasicPokemonFromJson(json);
-  BasicPokemon({
-    required this.name,
-    required this.urlIndex,
-  });
-
-  @CapitalizeConverter()
-  final String name;
-  @SpeciesUrlToIndexConverter()
-  @JsonKey(name: 'url')
-  final int urlIndex;
-
-  Map<String, dynamic> toJson() => _$BasicPokemonToJson(this);
 }

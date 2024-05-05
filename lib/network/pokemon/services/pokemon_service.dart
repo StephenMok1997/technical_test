@@ -2,8 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:technical_test/network/pokemon/models/generation/generation_list_response.dart';
 import 'package:technical_test/network/pokemon/models/generation/generation_response.dart';
-import 'package:technical_test/network/pokemon/models/pokemon_list_response.dart';
-import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/pokemon_list_response.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/pokemon_response.dart';
 
 part 'pokemon_service.g.dart';
 

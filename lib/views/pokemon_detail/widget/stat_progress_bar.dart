@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:technical_test/enum/poke_type.dart';
-import 'package:technical_test/network/pokemon/models/statistic.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/statistic_data.dart';
 
 class StatProgressBar extends StatelessWidget {
   const StatProgressBar({
