@@ -1,4 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:technical_test/enum/poke_stat.dart';
+import 'package:technical_test/enum/poke_type.dart';
 import 'package:technical_test/network/http/http_client.dart';
 
 class UrlToIndexConverter implements JsonConverter<int, String> {
@@ -62,4 +64,34 @@ class SpeciesUrlToIndexConverter implements JsonConverter<int, String> {
   @override
   String toJson(int i) =>
       '${HttpClient.dio.options.baseUrl}/pokemon-species/$i/';
+}
+
+class PokeTypeConverter implements JsonConverter<PokeType, String> {
+  const PokeTypeConverter();
+
+  @override
+  PokeType fromJson(String json) {
+    return PokeType.values.firstWhere(
+      (e) => json == e.name.toLowerCase(),
+      orElse: () => PokeType.unknown,
+    );
+  }
+
+  @override
+  String toJson(PokeType type) => type.name;
+}
+
+class PokeStatConverter implements JsonConverter<PokeStat, String> {
+  const PokeStatConverter();
+
+  @override
+  PokeStat fromJson(String json) {
+    return PokeStat.values.firstWhere(
+      (e) => json == e.name.toLowerCase(),
+      orElse: () => PokeStat.attack,
+    );
+  }
+
+  @override
+  String toJson(PokeStat stat) => stat.name;
 }

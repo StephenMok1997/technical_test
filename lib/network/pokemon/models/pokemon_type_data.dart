@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:technical_test/enum/poke_type.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
 part 'pokemon_type_data.g.dart';
@@ -19,10 +20,11 @@ class PokemonTypeData {
 
 @JsonSerializable(explicitToJson: true)
 class PokemonType {
-  @CapitalizeConverter()
-  final String name;
+  @PokeTypeConverter()
+  @JsonKey(name: 'name')
+  final PokeType pokeType;
 
-  PokemonType({required this.name});
+  PokemonType({required this.pokeType});
 
   factory PokemonType.fromJson(Map<String, dynamic> json) =>
       _$PokemonTypeFromJson(json);

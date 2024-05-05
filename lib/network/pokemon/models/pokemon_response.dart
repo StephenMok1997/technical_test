@@ -11,7 +11,7 @@ part 'pokemon_response.g.dart';
 class PokemonResponse {
   @CapitalizeConverter()
   final Species species;
-  final List<Statistic> stats;
+  final List<StatisticData> stats;
   final Sprites sprites;
   final List<PokemonTypeData> types;
   final int height;

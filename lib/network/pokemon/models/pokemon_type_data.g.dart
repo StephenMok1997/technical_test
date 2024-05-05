@@ -17,10 +17,10 @@ Map<String, dynamic> _$PokemonTypeDataToJson(PokemonTypeData instance) =>
     };
 
 PokemonType _$PokemonTypeFromJson(Map<String, dynamic> json) => PokemonType(
-      name: const CapitalizeConverter().fromJson(json['name'] as String),
+      pokeType: const PokeTypeConverter().fromJson(json['name'] as String),
     );
 
 Map<String, dynamic> _$PokemonTypeToJson(PokemonType instance) =>
     <String, dynamic>{
-      'name': const CapitalizeConverter().toJson(instance.name),
+      'name': const PokeTypeConverter().toJson(instance.pokeType),
     };

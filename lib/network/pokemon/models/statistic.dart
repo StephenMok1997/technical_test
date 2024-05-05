@@ -1,32 +1,36 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:technical_test/enum/poke_stat.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
 part 'statistic.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Statistic {
+class StatisticData {
   @JsonKey(name: 'base_stat')
   final int value;
   @JsonKey(name: 'stat')
   final StatisticType statType;
 
-  Statistic({
+  StatisticData({
     required this.value,
     required this.statType,
   });
 
-  factory Statistic.fromJson(Map<String, dynamic> json) =>
-      _$StatisticFromJson(json);
+  factory StatisticData.fromJson(Map<String, dynamic> json) =>
+      _$StatisticDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$StatisticToJson(this);
+  Map<String, dynamic> toJson() => _$StatisticDataToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
 class StatisticType {
-  @CapitalizeConverter()
-  final String name;
+  @PokeStatConverter()
+  @JsonKey(name: 'name')
+  final PokeStat pokeStat;
 
-  StatisticType({required this.name});
+  StatisticType({
+    required this.pokeStat,
+  });
 
   factory StatisticType.fromJson(Map<String, dynamic> json) =>
       _$StatisticTypeFromJson(json);

@@ -10,7 +10,7 @@ PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
     PokemonResponse(
       species: Species.fromJson(json['species'] as Map<String, dynamic>),
       stats: (json['stats'] as List<dynamic>?)
-              ?.map((e) => Statistic.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => StatisticData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       types: (json['types'] as List<dynamic>?)

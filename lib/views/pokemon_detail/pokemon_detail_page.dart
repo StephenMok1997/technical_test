@@ -1,8 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:technical_test/blocs/pokemon_detail/pokemon_detail_bloc.dart';
 import 'package:technical_test/network/pokemon/models/pokemon_response.dart';
+import 'package:technical_test/views/pokemon_detail/widget/stat_progress_bar.dart';
 
 class PokemonDetailPage extends StatefulWidget {
   final int urlId;
@@ -47,41 +50,71 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
               return Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _image(pokemon.sprites.frontDefault),
-                    _sectionTitle('Pokedex Data'),
-                    _dataRow(
-                      'National No.',
-                      pokemon.species.id.toString(),
-                    ),
-                    _dataRow(
-                      'Name',
-                      pokemon.species.name,
-                    ),
-                    _dataRow(
-                      'Weight',
-                      '${pokemon.weight / 10}kg',
-                    ),
-                    _dataRow(
-                      'Height',
-                      '${pokemon.height / 10}m',
-                    ),
-                    _dataRow(
-                      'Type',
-                      pokemon.types.map((item) => item.type.name).join(', '),
-                    ),
-                    const SizedBox(
-                      height: 12.0,
-                    ),
-                    _sectionTitle('Base Stats'),
-                    ...List.generate(
-                      pokemon.stats.length,
-                      (index) => _dataRow(
-                        pokemon.stats[index].statType.name,
-                        pokemon.stats[index].value.toString(),
+                    Text(
+                      '#${pokemon.species.id}',
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      pokemon.species.name,
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _data(
+                          'Weight',
+                          '${pokemon.weight / 10}kg',
+                        ),
+                        _data(
+                          'Height',
+                          '${pokemon.height / 10}m',
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Wrap(
+                      spacing: 32.0,
+                      children: List.generate(
+                        pokemon.types.length,
+                        (index) => Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0,
+                            vertical: 4.0,
+                          ),
+                          decoration: ShapeDecoration(
+                            color: pokemon.types[index].type.pokeType.color
+                                .withOpacity(0.2),
+                            shape: const StadiumBorder(),
+                          ),
+                          child: Text(
+                            pokemon.types[index].type.pokeType.name,
+                            style: TextStyle(
+                              color: pokemon.types[index].type.pokeType.color,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40.0,
+                    ),
+                    ...baseStatistic(context, pokemon),
                   ],
                 ),
               );
@@ -91,6 +124,42 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
         },
       ),
     );
+  }
+
+  List<Widget> baseStatistic(BuildContext context, PokemonResponse pokemon) {
+    return [
+      const Text(
+        'Base Statistic',
+        style: TextStyle(
+          fontSize: 20.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 4,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Column(
+          children: List.generate(
+            pokemon.stats.length,
+            (index) => StatProgressBar(
+              stat: pokemon.stats[index],
+              type: pokemon.types.first.type.pokeType,
+            ),
+          ),
+        ),
+      )
+    ];
   }
 
   Widget _image(String url) {
@@ -103,17 +172,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
     );
   }
 
-  Widget _sectionTitle(String title) {
-    return Text(
-      title,
-      style: const TextStyle(
-        fontSize: 28.0,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-
-  Widget _dataRow(
+  Widget _data(
     String name,
     String value,
   ) {
@@ -129,10 +188,8 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Expanded(
-            child: Text(
-              value,
-            ),
+          Text(
+            value,
           ),
         ],
       ),
