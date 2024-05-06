@@ -8,6 +8,7 @@ part of 'pokemon_response.dart';
 
 PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
     PokemonResponse(
+      id: (json['id'] as num).toInt(),
       species: Species.fromJson(json['species'] as Map<String, dynamic>),
       stats: (json['stats'] as List<dynamic>?)
               ?.map((e) => StatisticData.fromJson(e as Map<String, dynamic>))
@@ -24,6 +25,7 @@ PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'species': instance.species.toJson(),
       'stats': instance.stats.map((e) => e.toJson()).toList(),
       'sprites': instance.sprites.toJson(),
