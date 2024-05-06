@@ -21,7 +21,6 @@ cd technical_test
 
 ```bash
 flutter pub get
-Run the application:
 ```
 
 3. Run the application
