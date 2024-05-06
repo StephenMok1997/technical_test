@@ -1,16 +1,41 @@
-# technical_test
+# Infinit Technical Test
 
-A new Flutter project.
+## Prerequisites
 
-## Getting Started
+Before you begin, ensure you have the following installed:
 
-This project is a starting point for a Flutter application.
+- Flutter SDK
+- Dart SDK
+- An IDE (e.g., VSCode or Android Studio)
 
-A few resources to get you started if this is your first Flutter project:
+## Installation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone the repository:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+git clone https://github.com/StephenMok1997/technical_test.git
+cd technical_test
+```
+
+2. Install the dependencies:
+
+```bash
+flutter pub get
+Run the application:
+```
+
+3. Run the application
+
+```bash
+flutter run
+```
+
+## Testing
+
+1. Switch to `dev/test` branch
+
+2. Execute the following command in the terminal:
+
+```bash
+flutter test
+```
