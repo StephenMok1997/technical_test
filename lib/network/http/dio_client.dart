@@ -10,9 +10,13 @@ class DioClient {
     required this.config,
   });
 
-  final Dio _dio = Dio();
+  Dio _dio = Dio();
   final DioConfig config;
   final Logger logger = Logger();
+
+  void setDio(Dio dio) {
+    _dio = dio;
+  }
 
   Dio get instance => _dio;
 

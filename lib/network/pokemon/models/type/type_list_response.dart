@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:technical_test/enum/poke_type.dart';
 import 'package:technical_test/network/pokemon/models/common_converter.dart';
 
 part 'type_list_response.g.dart';
@@ -35,7 +36,7 @@ class BasicType {
       _$BasicTypeFromJson(json);
   @PokeTypeConverter()
   @JsonKey(name: 'name')
-  final String pokeType;
+  final PokeType pokeType;
   @UrlToIndexConverter()
   @JsonKey(name: 'url')
   final int urlIndex;

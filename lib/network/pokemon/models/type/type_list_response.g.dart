@@ -26,11 +26,11 @@ Map<String, dynamic> _$TypeListResponseToJson(TypeListResponse instance) =>
     };
 
 BasicType _$BasicTypeFromJson(Map<String, dynamic> json) => BasicType(
-      pokeType: json['name'] as String,
+      pokeType: const PokeTypeConverter().fromJson(json['name'] as String),
       urlIndex: const UrlToIndexConverter().fromJson(json['url'] as String),
     );
 
 Map<String, dynamic> _$BasicTypeToJson(BasicType instance) => <String, dynamic>{
-      'name': instance.pokeType,
+      'name': const PokeTypeConverter().toJson(instance.pokeType),
       'url': const UrlToIndexConverter().toJson(instance.urlIndex),
     };

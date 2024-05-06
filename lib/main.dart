@@ -9,6 +9,11 @@ import 'package:technical_test/routing/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpClient.initClient(
+    config: DioConfig(
+      baseUrl: '${EnvConfig.apiUrl}/${EnvConfig.apiVersion}',
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -23,11 +28,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    HttpClient.initClient(
-      config: DioConfig(
-        baseUrl: '${EnvConfig.apiUrl}/${EnvConfig.apiVersion}',
-      ),
-    );
   }
 
   @override
