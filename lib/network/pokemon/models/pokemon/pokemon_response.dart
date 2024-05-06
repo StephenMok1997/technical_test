@@ -12,6 +12,7 @@ class PokemonResponse {
   factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
       _$PokemonResponseFromJson(json);
   PokemonResponse({
+    required this.id,
     required this.species,
     this.stats = const [],
     this.types = const [],
@@ -20,6 +21,7 @@ class PokemonResponse {
     required this.weight,
   });
 
+  final int id;
   @CapitalizeConverter()
   final Species species;
   final List<StatisticData> stats;
