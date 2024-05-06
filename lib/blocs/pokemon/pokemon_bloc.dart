@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:technical_test/network/pokemon/models/pokemon/basic_pokemon.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_list_response.dart';
 import 'package:technical_test/repositories/pokemon_repository.dart';
 

@@ -4,6 +4,8 @@ import 'package:technical_test/network/pokemon/models/generation/generation_list
 import 'package:technical_test/network/pokemon/models/generation/generation_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_list_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_response.dart';
+import 'package:technical_test/network/pokemon/models/type/type_list_response.dart';
+import 'package:technical_test/network/pokemon/models/type/type_response.dart';
 
 part 'pokemon_service.g.dart';
 
@@ -23,10 +25,24 @@ abstract class PokemonService {
   });
 
   @GET('/generation')
-  Future<GenerationListResponse> getGeneration();
+  Future<GenerationListResponse> getGenerationList({
+    @Query('offset') int? offset,
+    @Query('limit') int? limit,
+  });
 
   @GET('/generation/{id}')
   Future<GenerationResponse> getGenerationById({
+    @Path('id') required int id,
+  });
+
+  @GET('/type')
+  Future<TypeListResponse> getTypeList({
+    @Query('offset') int? offset,
+    @Query('limit') int? limit,
+  });
+
+  @GET('/type/{id}')
+  Future<TypeResponse> getTypeById({
     @Path('id') required int id,
   });
 }

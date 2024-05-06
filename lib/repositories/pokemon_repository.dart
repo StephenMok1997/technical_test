@@ -3,6 +3,8 @@ import 'package:technical_test/network/pokemon/models/generation/generation_list
 import 'package:technical_test/network/pokemon/models/generation/generation_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_list_response.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_response.dart';
+import 'package:technical_test/network/pokemon/models/type/type_list_response.dart';
+import 'package:technical_test/network/pokemon/models/type/type_response.dart';
 import 'package:technical_test/network/pokemon/services/pokemon_service.dart';
 
 class PokemonRepository {
@@ -31,9 +33,15 @@ class PokemonRepository {
     return response;
   }
 
-  Future<GenerationListResponse> getGeneration() async {
+  Future<GenerationListResponse> getGenerationList({
+    int? offset,
+    int? limit,
+  }) async {
     final GenerationListResponse response =
-        await _pokemonService.getGeneration();
+        await _pokemonService.getGenerationList(
+      offset: offset,
+      limit: limit,
+    );
     return response;
   }
 
@@ -41,6 +49,26 @@ class PokemonRepository {
     required int id,
   }) async {
     final GenerationResponse response = await _pokemonService.getGenerationById(
+      id: id,
+    );
+    return response;
+  }
+
+  Future<TypeListResponse> getTypeList({
+    int? offset,
+    int? limit,
+  }) async {
+    final TypeListResponse response = await _pokemonService.getTypeList(
+      offset: offset,
+      limit: limit,
+    );
+    return response;
+  }
+
+  Future<TypeResponse> getTypeById({
+    required int id,
+  }) async {
+    final TypeResponse response = await _pokemonService.getTypeById(
       id: id,
     );
     return response;

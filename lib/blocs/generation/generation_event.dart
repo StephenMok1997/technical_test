@@ -4,5 +4,11 @@ part of 'generation_bloc.dart';
 sealed class GenerationEvent {}
 
 class GenerationFetched extends GenerationEvent {
-  GenerationFetched();
+  GenerationFetched({
+    this.offset,
+    this.limit = 20,
+  });
+
+  final int? offset;
+  final int? limit;
 }

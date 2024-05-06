@@ -20,6 +20,7 @@ enum PokeType {
   dark('Dark', Color(0xFF8F6955)),
   fairy('Fairy', Color(0xFFF9ACFF)),
   stellar('Stellar', Color(0xFF78C850)),
+  shawdow('Shadow', Color(0xFF000000)),
   unknown('Unknown', Color(0xFF000000));
 
   const PokeType(

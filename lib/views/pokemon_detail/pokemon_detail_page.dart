@@ -5,6 +5,7 @@ import 'package:technical_test/blocs/pokemon_detail/pokemon_detail_bloc.dart';
 import 'package:technical_test/network/pokemon/models/pokemon/pokemon_response.dart';
 import 'package:technical_test/views/pokemon_detail/widget/stat_progress_bar.dart';
 import 'package:technical_test/widgets/shadow_container.dart';
+import 'package:technical_test/widgets/type_tag.dart';
 
 class PokemonDetailPage extends StatefulWidget {
   const PokemonDetailPage({
@@ -91,22 +92,8 @@ class _PokemonDetailPageState extends State<PokemonDetailPage> {
                       spacing: 32.0,
                       children: List.generate(
                         pokemon.types.length,
-                        (index) => Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            vertical: 4.0,
-                          ),
-                          decoration: ShapeDecoration(
-                            color: pokemon.types[index].type.pokeType.color
-                                .withOpacity(0.2),
-                            shape: const StadiumBorder(),
-                          ),
-                          child: Text(
-                            pokemon.types[index].type.pokeType.name,
-                            style: TextStyle(
-                              color: pokemon.types[index].type.pokeType.color,
-                            ),
-                          ),
+                        (index) => TypeTag(
+                          type: pokemon.types[index].type.pokeType,
                         ),
                       ),
                     ),

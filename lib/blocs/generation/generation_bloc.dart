@@ -17,6 +17,7 @@ class GenerationBloc extends Bloc<GenerationEvent, GenerationState> {
       }
     });
   }
+
   Future<void> _generationFetched(
     GenerationFetched event,
     Emitter<GenerationState> emit,
@@ -29,12 +30,17 @@ class GenerationBloc extends Bloc<GenerationEvent, GenerationState> {
       final PokemonRepository pokemonRepository =
           context.read<PokemonRepository>();
       final GenerationListResponse response =
-          await pokemonRepository.getGeneration();
+          await pokemonRepository.getGenerationList(
+        limit: event.limit,
+        offset: event.offset,
+      );
 
       final List<GenerationResponse> generations = await Future.wait(
         List.generate(
           response.count,
-          (index) => pokemonRepository.getGenerationById(id: index + 1),
+          (index) => pokemonRepository.getGenerationById(
+            id: response.results[index].urlIndex,
+          ),
         ),
       );
       emit(

@@ -5,17 +5,19 @@ class ShadowContainer extends StatelessWidget {
     super.key,
     required this.child,
     this.padding,
+    this.color,
   });
 
   final Widget child;
   final EdgeInsets? padding;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: padding ?? const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: color ?? Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(10.0),
         boxShadow: [
           BoxShadow(
