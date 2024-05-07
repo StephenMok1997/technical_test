@@ -14,7 +14,8 @@ class DashboardTab extends StatefulWidget {
   State<DashboardTab> createState() => _DashboardTabState();
 }
 
-class _DashboardTabState extends State<DashboardTab> {
+class _DashboardTabState extends State<DashboardTab>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -185,4 +186,7 @@ class _DashboardTabState extends State<DashboardTab> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

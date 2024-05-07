@@ -12,7 +12,7 @@ class ListTab extends StatefulWidget {
   State<ListTab> createState() => _ListTabState();
 }
 
-class _ListTabState extends State<ListTab> {
+class _ListTabState extends State<ListTab> with AutomaticKeepAliveClientMixin {
   final PagingController<int, BasicPokemon> pagingController =
       PagingController(firstPageKey: 0);
 
@@ -60,4 +60,7 @@ class _ListTabState extends State<ListTab> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
